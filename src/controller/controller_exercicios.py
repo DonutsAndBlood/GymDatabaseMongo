@@ -1,6 +1,9 @@
 from model.Exercicios import Exercicios
 import pandas as pd
 from conexion.mongo_queries import MongoQueries
+from reports.relatorio import Relatorio
+
+relatorio = Relatorio()
 
 class Controller_Exercicios:
     def __init__(self):
@@ -14,14 +17,14 @@ class Controller_Exercicios:
         repeticoes = input("Número de repetições: ")
         grupo_muscular= input("Grupo muscular treinado: ")
 
-        sequence = int(self.mongo.db["exercicios"].count_documents({})+1)
+        sequence = float(self.mongo.db["exercicios"].count_documents({})+1)
 
         
         # Insere e persiste o novo cliente
         self.mongo.db["exercicios"].insert_one({"Codigo_Exercicio": sequence, "Repeticoes": repeticoes,"Nome_Exercicio": nome_exercicio,"Grupo_Muscular": grupo_muscular})
         # Recupera os dados do novo cliente criado transformando em um DataFrame
 
-        df_exercicio = self.recupera_exercicio(sequence)
+        df_exercicio = self.recupera_exercicio(nome_exercicio)
 
 
         # Cria um novo objeto Cliente
@@ -49,28 +52,28 @@ class Controller_Exercicios:
         self.mongo.connect() 
         
 
-        #self.listar_exercicios()
-        codigo_exercicio = int(input("Insira o código do exercício a ser alterado"))
-
+        print(self.listar_exercicios())
+        codigo_exercicio = float(input("Insira o código do exercício a ser alterado\n"))
+        
         if not self.verifica_existencia_exercicio(codigo_exercicio):
 
 
-            print("1 - Nome\n 2 - Repetições")
+            print("1 - Nome\n2 - Repetições")
             aux = int(input("Insira qual atributo irá ser alterado"))
             #Alterar nome      
             if aux == 1:
 
                 novo_nome = input("Insira o novo nome: ")
 
-                self.mongo.db["exercicios"].update_one({"Codigo_Exercicio": f"{codigo_exercicio}"}, {"$set": {"Nome_Exercicio": novo_nome}})
+                self.mongo.db["exercicios"].update_one({"Codigo_Exercicio": codigo_exercicio}, {"$set": {"Nome_Exercicio": novo_nome}})
 
-                df_exercicio = self.recupera_exercicio(codigo_exercicio)
+                df_exercicio = self.recupera_exercicio(novo_nome)
 
+                codigo = df_exercicio.Codigo_Exercicio.values[0]
+                repeticoes = df_exercicio.Repeticoes.values[0]
+                grupo_muscular = df_exercicio.Grupo_Muscular.values[0]
+                nome = df_exercicio.Nome_Exercicio.values[0]
 
-                codigo = df_exercicio.codigo_exercicio.values[0]
-                repeticoes = df_exercicio.repeticoes.values[0]
-                grupo_muscular = df_exercicio.grupo_muscular.values[0]
-                nome = df_exercicio.nome_exercicio.values[0]
                 exercicio_atualizado = Exercicios(codigo,repeticoes,grupo_muscular,nome)
 
 
@@ -85,13 +88,15 @@ class Controller_Exercicios:
                 novo_repeticoes = input("Insira o novo número de repetições: ")
 
 
-                self.mongo.db["exercicios"].update_one({"Codigo_Exercicio": f"{codigo_exercicio}"}, {"$set": {"Repeticoes": novo_repeticoes}})
+                self.mongo.db["exercicios"].update_one({"Codigo_Exercicio": codigo_exercicio}, {"$set": {"Repeticoes": novo_repeticoes}})
+
+                df_exercicio = pd.DataFrame(list(self.mongo.db["exercicios"].find({"Codigo_Exercicio":codigo_exercicio}, {"Repeticoes": 1, "Codigo_Exercicio": 1,"Grupo_Muscular":1,"Nome_Exercicio":1, "_id": 0})))
 
 
-                codigo = df_exercicio.codigo_exercicio.values[0]
-                repeticoes = df_exercicio.repeticoes.values[0]
-                grupo_muscular = df_exercicio.grupo_muscular.values[0]
-                nome = df_exercicio.nome_exercicio.values[0]
+                codigo = df_exercicio.Codigo_Exercicio.values[0]
+                repeticoes = df_exercicio.Repeticoes.values[0]
+                grupo_muscular = df_exercicio.Grupo_Muscular.values[0]
+                nome = df_exercicio.Nome_Exercicio.values[0]
                 exercicio_atualizado = Exercicios(codigo,repeticoes,grupo_muscular,nome)
             
 
@@ -107,26 +112,27 @@ class Controller_Exercicios:
         # Cria uma nova conexão com o banco que permite alteração
         self.mongo.connect()
 
-        #self.listar_exercicios()
+        
 
         
-        codigo_exercicio = int(input("Codigo do exercicio a ser excluído: "))
+        print(self.listar_exercicios())
+        codigo_exercicio = float(input("Codigo do exercicio a ser excluído: "))
 
+
+        df_exercicio = pd.DataFrame(list(self.mongo.db["exercicios"].find({"Codigo_Exercicio":codigo_exercicio}, {"Repeticoes": 1, "Codigo_Exercicio": 1,"Grupo_Muscular":1,"Nome_Exercicio":1, "_id": 0})))
 
         # Solicita ao usuário o CPF do Cliente a ser alterado
 
+        df_exercicio.to_string()
         # Verifica se o cliente existe na base de dados
-        if self.verifica_existencia_exercicio(codigo_exercicio):            
+        if not self.verifica_existencia_exercicio(codigo_exercicio):         
 
             # Recupera os dados do novo cliente criado transformando em um DataFrame
-            df_exercicio = pd.DataFrame(list(self.mongo.db["exercicios"].find({"Codigo_Exercicio":f"{codigo_exercicio}"}, {"Repeticoes": 1, "Codigo_Exercicio": 1,"Grupo_Muscular":1,"Nome_Exercicio":1, "_id": 0})))
-        
 
-            df_exercicio = self.recupera_exercicio(codigo_exercicio)
+            print(df_exercicio.Codigo_Exercicio.values[0])
+            aux = input("teste")
 
-            self.mongo.db["exercicios"].delete_one({"Codigo_Exercicio":f"{codigo_exercicio}"})
-
-            print(df_exercicio.to_string())
+            self.mongo.db["exercicios"].delete_one({"Codigo_Exercicio":codigo_exercicio})
 
             codigo = df_exercicio.Codigo_Exercicio.values[0]
             repeticoes = df_exercicio.Repeticoes.values[0]
@@ -145,14 +151,13 @@ class Controller_Exercicios:
             
 
             
-    def verifica_existencia_exercicio(self, codigo_exercicio:int=None, external:bool=False) -> bool:
+    def verifica_existencia_exercicio(self, codigo_exercicio:float=None, external:bool=False) -> bool:
         if external:
             # Cria uma nova conexão com o banco que permite alteração
             self.mongo.connect()
 
         # Recupera os dados do novo cliente criado transformando em um DataFrame
-        df_exercicio = pd.DataFrame(list(self.mongo.db["exercicios"].find({"Codigo_Exercicio":f"{codigo_exercicio}"}, {"Repeticoes": 1, "Codigo_Exercicio": 1,"Grupo_Muscular":1,"Nome_Exercicio":1, "_id": 0})))
-        
+        df_exercicio = pd.DataFrame(list(self.mongo.db["exercicios"].find({"Codigo_Exercicio":codigo_exercicio}, {"Repeticoes": 1, "Codigo_Exercicio": 1,"Grupo_Muscular":1,"Nome_Exercicio":1, "_id": 0})))   
 
         if external:
             # Fecha a conexão com o Mongo
@@ -162,18 +167,20 @@ class Controller_Exercicios:
 
 
 
+    
 
-    def recupera_exercicio(self, sequence:int=None, external:bool=False) -> pd.DataFrame:
+    def recupera_exercicio(self, nome:str=None, external:bool=False) -> pd.DataFrame:
 
         if external:
             # Cria uma nova conexão com o banco que permite alteração
             self.mongo.connect()
 
         # Recupera os dados do novo cliente criado transformando em um DataFrame
-
-        df_exercicio = pd.DataFrame(list(self.mongo.db["exercicios"].find({"Codigo_Exercicio":f"{sequence}"}, {"Repeticoes": 1, "Codigo_Exercicio": 1, "Grupo_Muscular":1, "Nome_Exercicio":1,"_id": 0})))
-    
+            
         
+
+        df_exercicio = pd.DataFrame(list(self.mongo.db["exercicios"].find({"Nome_Exercicio":f"{nome}"},{"Nome_Exercicio":1,"Codigo_Exercicio":1,"Repeticoes":1,"Grupo_Muscular":1, "_id":0})))
+
         print(df_exercicio.to_string())
 
         if external:
@@ -184,14 +191,20 @@ class Controller_Exercicios:
 
 
 
-    # def listar_exercicios(self, external:bool=False) -> bool:
+    def listar_exercicios(self, external:bool=False) -> bool:
 
-    #     query = """db.getCollection('exercicios').find({})"""
-
-
-    #     if external:
-    #         # Cria uma nova conexão com o banco que permite alteração
-    #         self.mongo.connect()
-    #     print(pd.DataFrame(query))
+        self.mongo.connect()
+        # Recupera os dados transformando em um DataFrame
+        query_result = self.mongo.db["exercicios"].find({}, 
+                                                 {"Codigo_Exercicio": 1,
+                                                  "Repeticoes": 1, 
+                                                  "Nome_Exercicio": 1,
+                                                  "Grupo_Muscular": 1,
+                                                  "_id": 0
+                                                 })#.sort("Nome_Exercicio", ASCENDING) #Só não está ficando ASCENDING
+        df_exercicio = pd.DataFrame(list(query_result))
+        # Fecha a conexão com o mongo
+        # Exibe o resultado
+        print(df_exercicio)
         
         
