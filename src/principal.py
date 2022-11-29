@@ -1,25 +1,27 @@
 from utils import config
 from utils.splash_screen import SplashScreen
-from reports.relatorios import Relatorio
+# from reports.relatorios import Relatorio
+from reports.relatorio import Relatorio
 from controller.controller_exercicios import Controller_Exercicios
 from controller.controller_alunos import Controller_Alunos
 
 tela_inicial = SplashScreen()
-relatorios = Relatorio()
+# relatorios = Relatorio()
+relatorio = Relatorio()
 ctrl_exercicio = Controller_Exercicios()
 ctrl_aluno = Controller_Alunos()
 
 
-# def relatorios(opcao_relatorio:int=0):
+def relatorios(opcao_relatorio:int=0):
 
-#     if opcao_relatorio == 1:
-#         relatorio.get_relatorio_alunos()          
-#     elif opcao_relatorio == 2:
-#         relatorio.get_relatorio_exercicios()
-#     elif opcao_relatorio == 3:
-#         relatorio.get_relatorio_exercicio_favorito()
-#     elif opcao_relatorio == 4:
-#         relatorio.get_relatorio_quant_pagamentos()
+    if opcao_relatorio == 1:
+        relatorio.get_relatorio_alunos()          
+    elif opcao_relatorio == 2:
+        relatorio.get_relatorio_exercicios()
+    # elif opcao_relatorio == 3:
+    #     relatorio.get_relatorio_exercicio_favorito()
+    # elif opcao_relatorio == 4:
+    #     relatorio.get_relatorio_quant_pagamentos()
         
 
 def inserir(opcao_inserir:int=0):
@@ -33,10 +35,10 @@ def atualizar(opcao_atualizar:int=0):
 
     if opcao_atualizar == 1:
         relatorio.get_relatorio_alunos
-        aluno_atualizado = ctrl_aluno.atualizar_alunos()
+        aluno_atualizado = ctrl_aluno.atualizar_aluno()
     elif opcao_atualizar == 2:
         relatorio.get_relatorio_exercicios
-        exercicio_atualizado = ctrl_exercicio.atualizar_exercicios()
+        exercicio_atualizado = ctrl_exercicio.atualizar_exercicio()
 
 
 def excluir(opcao_excluir:int=0):
