@@ -23,16 +23,16 @@ db.exercicios.insertMany([
 {Codigo_Exercicio: 18, Repeticoes: 10, Nome_Exercicio: 'Rosca direita barra Reta', Grupo_Muscular: 'B'},
 {Codigo_Exercicio: 19, Repeticoes: 12, Nome_Exercicio: 'Martelo em p?', Grupo_Muscular: 'B'},
 {Codigo_Exercicio: 20, Repeticoes: 11, Nome_Exercicio: 'Rosca Punho', Grupo_Muscular: 'B'},
-{Codigo_Exercicio: 11, Repeticoes: 11, Nome_Exercicio: 'Leg press 45?', Grupo_Muscular: 'C'},
-{Codigo_Exercicio: 12, Repeticoes: 12, Nome_Exercicio: 'Extensor de pernas', Grupo_Muscular: 'C'},
-{Codigo_Exercicio: 13, Repeticoes: 10, Nome_Exercicio: 'Flexora Sentada', Grupo_Muscular: 'C'},
-{Codigo_Exercicio: 14, Repeticoes: 12, Nome_Exercicio: 'Adutora', Grupo_Muscular: 'C'},
-{Codigo_Exercicio: 15, Repeticoes: 12, Nome_Exercicio: 'Abdutora', Grupo_Muscular: 'C'},
-{Codigo_Exercicio: 16, Repeticoes: 12, Nome_Exercicio: 'Stiff', Grupo_Muscular: 'C'},
-{Codigo_Exercicio: 17, Repeticoes: 11, Nome_Exercicio: 'Desenvolvimento nuca com Barra', Grupo_Muscular: 'C'},
-{Codigo_Exercicio: 18, Repeticoes: 12, Nome_Exercicio: 'Desenvolvimento Maquina', Grupo_Muscular: 'C'},
-{Codigo_Exercicio: 19, Repeticoes: 11, Nome_Exercicio: 'Eleva??o frontal com halteres em p?', Grupo_Muscular: 'C'},
-{Codigo_Exercicio: 20, Repeticoes: 11, Nome_Exercicio: 'Eleva??o lateral com halteres sentado', Grupo_Muscular: 'C'}
+{Codigo_Exercicio: 21, Repeticoes: 11, Nome_Exercicio: 'Leg press 45?', Grupo_Muscular: 'C'},
+{Codigo_Exercicio: 22, Repeticoes: 12, Nome_Exercicio: 'Extensor de pernas', Grupo_Muscular: 'C'},
+{Codigo_Exercicio: 23, Repeticoes: 10, Nome_Exercicio: 'Flexora Sentada', Grupo_Muscular: 'C'},
+{Codigo_Exercicio: 24, Repeticoes: 12, Nome_Exercicio: 'Adutora', Grupo_Muscular: 'C'},
+{Codigo_Exercicio: 25, Repeticoes: 12, Nome_Exercicio: 'Abdutora', Grupo_Muscular: 'C'},
+{Codigo_Exercicio: 26, Repeticoes: 12, Nome_Exercicio: 'Stiff', Grupo_Muscular: 'C'},
+{Codigo_Exercicio: 27, Repeticoes: 11, Nome_Exercicio: 'Desenvolvimento nuca com Barra', Grupo_Muscular: 'C'},
+{Codigo_Exercicio: 28, Repeticoes: 12, Nome_Exercicio: 'Desenvolvimento Maquina', Grupo_Muscular: 'C'},
+{Codigo_Exercicio: 29, Repeticoes: 11, Nome_Exercicio: 'Eleva??o frontal com halteres em p?', Grupo_Muscular: 'C'},
+{Codigo_Exercicio: 30, Repeticoes: 11, Nome_Exercicio: 'Eleva??o lateral com halteres sentado', Grupo_Muscular: 'C'}
 ])
 
 db.alunos.insertMany([

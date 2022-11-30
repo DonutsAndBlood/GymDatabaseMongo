@@ -28,9 +28,8 @@ class Relatorio:
         print(df_aluno)
         input("Pressione Enter para Sair do Relatório de Clientes")
 
-            
 
-    def get_relatorio_exercicios(self):
+        def get_relatorio_exercicios(self):
         # Cria uma nova conexão com o banco
         mongo = MongoQueries()
         mongo.connect()
@@ -47,4 +46,42 @@ class Relatorio:
         mongo.close()
         # Exibe o resultado
         print(df_exercicio)
+        input("Pressione Enter para Sair do Relatório de Clientes")
+
+
+        def get_relatorio_quant_pagamentos(self):
+        # Cria uma nova conexão com o banco
+        mongo = MongoQueries()
+        mongo.connect()
+        # Recupera os dados transformando em um DataFrame
+        query_result = mongo.db["alunos"].find({}, 
+                                                (
+                                                    {"Pagamento": "I"},
+                                                    {"Nome_Aluno": 1, _id: 0}
+                                                ))#.sort("Nome_Aluno", ASCENDING) #Só não está ficando ASCENDING
+        df_aluno = pd.DataFrame(list(query_result))
+        # Fecha a conexão com o mongo
+        mongo.close()
+        # Exibe o resultado
+        print(df_aluno)
+        input("Pressione Enter para Sair do Relatório de Clientes")
+
+
+        def get_relatorio_exercicio_favorito(self):
+        # Cria uma nova conexão com o banco
+        mongo = MongoQueries()
+        mongo.connect()
+        # Recupera os dados transformando em um DataFrame
+        query_result = mongo.db["alunos"].$lookup({},
+                                                {
+                                                    from: "alunos"
+                                                    "localField": "Alunos_Exercicios"
+                                                    "foreignField": "Codigo_Exercicio"
+                                                    as: "Total_Favoritos"
+                                                })#.sort("Nome_Aluno", ASCENDING) #Só não está ficando ASCENDING
+        df_aluno = pd.DataFrame(list(query_result))
+        # Fecha a conexão com o mongo
+        mongo.close()
+        # Exibe o resultado
+        print(df_aluno)
         input("Pressione Enter para Sair do Relatório de Clientes")
