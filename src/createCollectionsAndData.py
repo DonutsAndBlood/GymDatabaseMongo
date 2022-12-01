@@ -51,18 +51,15 @@ def extract_and_insert():
 
 def inserts():
     mongo.connect()
-    with open('GymDatabaseMongo/Inserts/Inserts_Alunos.js') as file:
-        print(file)
-        file_data = json.loads(file.read())
-        print(file_data)
+    with open('GymDatabaseMongo/Inserts/Insert_Alunos.json') as file:
+        file_data = json.load(file)
         mongo.db["alunos"].insert_many(file_data)
         print("Alunos inseridos...")
 
-    with open('GymDatabaseMongo/Inserts/Inserts_Exercicios.js') as file:
-        file_data = json.loads(file.read())
-        print(file_data)
+    with open('GymDatabaseMongo/Inserts/Insert_Exercicios.json') as file:
+        file_data = json.load(file)
         mongo.db["exercicios"].insert_many(file_data)
-        print("Exercícios inseridos")
+        print("Exercícios inseridos...")
     mongo.close()
 
 if __name__ == "__main__":

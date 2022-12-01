@@ -1,0 +1,182 @@
+[
+    {
+        "Codigo_Exercicio": 1.0, 
+        "Repeticoes": 12, 
+        "Nome_Exercicio": "Voador", 
+        "Grupo_Muscular": "A"
+    },
+    {
+        "Codigo_Exercicio": 2.0, 
+        "Repeticoes": 12, 
+        "Nome_Exercicio": "Supino inclinado com barra", 
+        "Grupo_Muscular": "A"
+    },
+    {
+        "Codigo_Exercicio": 3.0, 
+        "Repeticoes": 12, 
+        "Nome_Exercicio": "Crucifixo reto", 
+        "Grupo_Muscular": "A"
+    },
+    {
+        "Codigo_Exercicio": 4.0, 
+        "Repeticoes": 11, 
+        "Nome_Exercicio": "Supino reto com barra", 
+        "Grupo_Muscular": "A"
+    },
+    {
+        "Codigo_Exercicio": 5.0, 
+        "Repeticoes": 10, 
+        "Nome_Exercicio": "Triceps Voador", 
+        "Grupo_Muscular": "A"
+    },
+    {
+        "Codigo_Exercicio": 6.0, 
+        "Repeticoes": 10, 
+        "Nome_Exercicio": "Triceps Corda Cross", 
+        "Grupo_Muscular": "A"
+    },
+    {
+        "Codigo_Exercicio": 7.0, 
+        "Repeticoes": 12, 
+        "Nome_Exercicio": "Polichinelo", 
+        "Grupo_Muscular": "A"
+    },
+    {
+        "Codigo_Exercicio": 8.0, 
+        "Repeticoes": 10, 
+        "Nome_Exercicio": "Flexao", 
+        "Grupo_Muscular": "A"
+    },
+    {
+        "Codigo_Exercicio": 9.0, 
+        "Repeticoes": 11, 
+        "Nome_Exercicio": "Triceps Barra Cross", 
+        "Grupo_Muscular": "A"
+    },
+    {
+        "Codigo_Exercicio": 10.0, 
+        "Repeticoes": 12,
+        "Nome_Exercicio": "Triceps Testa", 
+        "Grupo_Muscular": "A"
+    },
+    {
+        "Codigo_Exercicio": 11.0, 
+        "Repeticoes": 11, 
+        "Nome_Exercicio": "Levantamento Terra", 
+        "Grupo_Muscular": "B"
+    },
+    {
+        "Codigo_Exercicio": 12.0, 
+        "Repeticoes": 12, 
+        "Nome_Exercicio": "Pulley Frontal", 
+        "Grupo_Muscular": "B"
+    },
+    {
+        "Codigo_Exercicio": 13.0, 
+        "Repeticoes": 11, 
+        "Nome_Exercicio": "Pulley Costas", 
+        "Grupo_Muscular": "B"
+    },
+    {
+        "Codigo_Exercicio": 14.0, 
+        "Repeticoes": 11, 
+        "Nome_Exercicio": "Remada Baixa", 
+        "Grupo_Muscular": "B"
+    },
+    {
+        "Codigo_Exercicio": 15.0, 
+        "Repeticoes": 12, 
+        "Nome_Exercicio": "Serrote", 
+        "Grupo_Muscular": "B"
+    },
+    {
+        "Codigo_Exercicio": 16.0, 
+        "Repeticoes": 10, 
+        "Nome_Exercicio": "Rosca Alternada com Banco", 
+        "Grupo_Muscular": "B"
+    },
+    {
+        "Codigo_Exercicio": 17.0, 
+        "Repeticoes": 11, 
+        "Nome_Exercicio": "Rosca Scott barra W", 
+        "Grupo_Muscular": "B"
+    },
+    {
+        "Codigo_Exercicio": 18.0, 
+        "Repeticoes": 10, 
+        "Nome_Exercicio": "Rosca direita barra reta", 
+        "Grupo_Muscular": "B"
+    },
+    {
+        "Codigo_Exercicio": 19.0, 
+        "Repeticoes": 12, 
+        "Nome_Exercicio": "Martelo", 
+        "Grupo_Muscular": "B"
+    },
+    {
+        "Codigo_Exercicio": 20.0, 
+        "Repeticoes": 11, 
+        "Nome_Exercicio": "Rosca Punho", 
+        "Grupo_Muscular": "B"
+    },
+    {
+        "Codigo_Exercicio": 21.0, 
+        "Repeticoes": 11, 
+        "Nome_Exercicio": "Leg press 45", 
+        "Grupo_Muscular": "C"
+    },
+    {
+        "Codigo_Exercicio": 22.0, 
+        "Repeticoes": 12, 
+        "Nome_Exercicio": "Extensor de pernas", 
+        "Grupo_Muscular": "C"
+    },
+    {
+        "Codigo_Exercicio": 23.0, 
+        "Repeticoes": 10, 
+        "Nome_Exercicio": "Flexora Sentada", 
+        "Grupo_Muscular": "C"
+    },
+    {
+        "Codigo_Exercicio": 24.0, 
+        "Repeticoes": 12, 
+        "Nome_Exercicio": "Adutora", 
+        "Grupo_Muscular": "C"
+    },
+    {
+        "Codigo_Exercicio": 25.0, 
+        "Repeticoes": 12, 
+        "Nome_Exercicio": "Abdutora", 
+        "Grupo_Muscular": "C"
+    },
+    {
+        "Codigo_Exercicio": 26.0, 
+        "Repeticoes": 12, 
+        "Nome_Exercicio": "Stiff", 
+        "Grupo_Muscular": "C"
+    },
+    {
+        "Codigo_Exercicio": 27.0, 
+        "Repeticoes": 11, 
+        "Nome_Exercicio": "Desenvolvimento nuca com Barra", 
+        "Grupo_Muscular": "C"
+    },
+    {
+        "Codigo_Exercicio": 28.0, 
+        "Repeticoes": 12, 
+        "Nome_Exercicio": "Desenvolvimento  Máquina", 
+        "Grupo_Muscular": "C"
+    },
+    {
+        "Codigo_Exercicio": 29.0, 
+        "Repeticoes": 11, 
+        "Nome_Exercicio": "Elevação FRontal com halteres", 
+        "Grupo_Muscular": "C"
+    },
+    {
+        "Codigo_Exercicio": 30.0, 
+        "Repeticoes": 11, 
+        "Nome_Exercicio": "DEsenvolvimento Máquina H", 
+        "Grupo_Muscular": "C"
+    }
+]
