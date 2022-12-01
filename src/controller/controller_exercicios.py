@@ -129,9 +129,6 @@ class Controller_Exercicios:
 
             # Recupera os dados do novo cliente criado transformando em um DataFrame
 
-            print(df_exercicio.Codigo_Exercicio.values[0])
-            aux = input("teste")
-
             self.mongo.db["exercicios"].delete_one({"Codigo_Exercicio":codigo_exercicio})
 
             codigo = df_exercicio.Codigo_Exercicio.values[0]
