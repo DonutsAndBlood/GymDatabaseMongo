@@ -4,6 +4,9 @@ from utils.splash_screen import SplashScreen
 from reports.relatorio import Relatorio
 from controller.controller_exercicios import Controller_Exercicios
 from controller.controller_alunos import Controller_Alunos
+import createCollectionsAndData
+import json
+
 
 tela_inicial = SplashScreen()
 # relatorios = Relatorio()
@@ -18,10 +21,10 @@ def relatorios(opcao_relatorio:int=0):
         relatorio.get_relatorio_alunos()          
     elif opcao_relatorio == 2:
         relatorio.get_relatorio_exercicios()
-    # elif opcao_relatorio == 3:
-    #     relatorio.get_relatorio_exercicio_favorito()
-    # elif opcao_relatorio == 4:
-    #     relatorio.get_relatorio_quant_pagamentos()
+    elif opcao_relatorio == 3:
+        relatorio.get_relatorio_exercicio_favorito()
+    elif opcao_relatorio == 4:
+        relatorio.get_relatorio_quant_pagamentos()
         
 
 def inserir(opcao_inserir:int=0):
@@ -103,13 +106,15 @@ def run():
             print(tela_inicial.get_updated_screen())
             config.clear_console()
 
-        # elif opcao == 5:##Carrega templates
+        elif opcao == 5: #carrega templates
 
-        #     create_tables_and_records.run()
-        #     config.clear_console(1)
-        #     config.clear_console()
-        #     print(tela_inicial.get_updated_screen())
-        #     config.clear_console()
+            createCollectionsAndData.createCollections(True)
+            createCollectionsAndData.extract_and_insert()
+
+            config.clear_console(1)
+            config.clear_console()
+            print(tela_inicial.get_updated_screen())
+            config.clear_console()
 
         elif opcao == 6:
 
