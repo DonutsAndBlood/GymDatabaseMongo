@@ -103,22 +103,21 @@ class Controller_Alunos:
 
                     print(novo_aluno.to_string())
                     print("Deseja continuar alterando?")
-                    aux = int(input("""1 - Sim\n2 - Não\n"""))
+                    aux2 = int(input("""1 - Sim\n2 - Não\n"""))
                     config.clear_console()
 
-                    if aux == 2:
+                    if aux2 == 2:
                         return novo_aluno
 
-
- 
                 #Alterar Telefone
                 elif aux == 2:
-                    while True:
+                    novo_telefone = "0"
+                    while (len(str(novo_telefone))) != 11:
                         novo_telefone = input("Insira o novo telefone: ")
                         if (len(str(novo_telefone))) != 11 :
                             print("Telefone inválido")
-                        else:
 
+                        else:
                             self.mongo.db["alunos"].update_one({"Cpf": f"{cpf}"}, {"$set": {"Telefone": novo_telefone}})
                             df_aluno = self.recupera_aluno(cpf)
 
@@ -134,10 +133,10 @@ class Controller_Alunos:
                             print(aluno_atualizado.to_string())
 
                             print("Deseja continuar alterando?")
-                            aux = int(input("""1 - Sim\n2 - Não\n"""))
+                            aux2 = int(input("""1 - Sim\n2 - Não\n"""))
                             config.clear_console()
                             
-                            if aux == 2:
+                            if aux2 == 2:
                                 return aluno_atualizado
                     
 
