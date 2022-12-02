@@ -109,7 +109,7 @@ def run():
         elif opcao == 5: #carrega templates
 
             createCollectionsAndData.createCollections(True)
-            createCollectionsAndData.extract_and_insert()
+            createCollectionsAndData.inserts()
 
             config.clear_console(1)
             config.clear_console()

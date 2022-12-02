@@ -19,7 +19,7 @@ class SplashScreen:
     def get_updated_screen(self):
         return f"""
         ########################################################
-        #                   SISTEMA DE VENDAS                     
+        #                   SUPER GYM                     
         #                                                         
         #  TOTAL DE REGISTROS:                                    
         #      1 - Alunos:         {str(self.get_documents_count(collection_name="alunos")).rjust(5)}
